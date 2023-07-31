@@ -1,0 +1,74 @@
+/* Styles for the main calendar container */
+.App {
+  font-family: Arial, sans-serif;
+}
+
+/* Styles for the custom toolbar */
+.custom-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  background-color: #f2f2f2;
+  padding: 10px;
+}
+
+.toolbar-label {
+  font-size: 24px;
+}
+
+.toolbar-buttons {
+  display: flex;
+}
+
+.toolbar-button {
+  cursor: pointer;
+  background-color: #4285f4;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  font-size: 14px;
+  margin-right: 10px;
+}
+
+.toolbar-button:last-child {
+  margin-right: 0;
+}
+
+/* Styles for the individual events */
+.custom-event {
+  background-color: #4285f4;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  margin-bottom: 5px;
+}
+
+/* Styles for the events in the agenda view */
+.custom-agenda-event {
+  background-color: #fff;
+  border: 1px solid #e0e0e0;
+  padding: 10px;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+  margin-bottom: 5px;
+}
+
+.event-title {
+  font-weight: bold;
+}
+
+.event-time {
+  color: #666;
+}
+
+/* Styles for the selected event */
+.rbc-selected {
+  background-color: #f2f2f2;
+  outline: none;
+}
