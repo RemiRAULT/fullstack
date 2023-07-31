@@ -1,74 +1,67 @@
-import Image from 'next/image'
-import styles from './page.module.css'
-const dbConfig = require("../config/db.config.js");
-
-
-
-export default function Home() {
+export default function auth() {
   return (
-    <main className={styles.main}>
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
-
-      
-
-      <div className={styles.grid}>
-        <a
-          href="http://localhost:3000/user"
-          className={styles.card}
-          rel="noopener noreferrer"
-        >
-          <h2>
-            User <span>-&gt;</span>
+    <>
+      <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
+        <div className="sm:mx-auto sm:w-full sm:max-w-sm">
+          <h2 className="mt-10 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">
+            Conecter-vous avec votre compte
           </h2>
-          <p>Gestion du compte</p>
-        </a>
+        </div>
 
-        <a
-          href="http://localhost:3000/dashboard"
-          className={styles.card}
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Agenda <span>-&gt;</span>
-          </h2>
-          <p>Agenda personnel</p>
-        </a>
+        <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
+          <form className="space-y-6" action="#" method="POST">
+            <div>
+              <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
+                Adresse emmail
+              </label>
+              <div className="mt-2">
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  autoComplete="email"
+                  required
+                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                />
+              </div>
+            </div>
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore the Next.js 13 playground.</p>
-        </a>
+            <div>
+              <div className="flex items-center justify-between">
+                <label htmlFor="password" className="block text-sm font-medium leading-6 text-gray-900">
+                  Mot de passe
+                </label>
+              </div>
+              <div className="mt-2">
+                <input
+                  id="password"
+                  name="password"
+                  type="password"
+                  autoComplete="current-password"
+                  required
+                  className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
+                />
+              </div>
+            </div>
 
-        <a
-          href="https://www.linkedin.com/in/r%C3%A9mi-rault-334ba2199/"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Linkedin <span>-&gt;</span>
-          </h2>
-          <p>
-            Page de contact de Rémi RAULT
+            <div>
+              <button
+                type="submit"
+                className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
+              >
+                Se connecter
+              </button>
+            </div>
+          </form>
+
+          <p className="mt-10 text-center text-sm text-gray-500">
+            Pas de compte ?{' '}
+            <a href="http://localhost:3000/signup" className="font-semibold leading-6 text-indigo-600 hover:text-indigo-500">
+              Création de compte
+            </a>
           </p>
-        </a>
+        </div>
       </div>
-    </main>
+    </>
   )
 }

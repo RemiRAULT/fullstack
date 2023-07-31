@@ -1,0 +1,355 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "description": "Documentation de L'API du VELOTOUR",
+        "version": "1.0.0",
+        "title": "API",
+        "contact": {
+            "email": "remi.rault1@gmail.com"
+        },
+        "license": {
+            "name": "Apache 2.4",
+            "url": "http://www.apache.org/licenses/LICENSE-2.4.html"
+        }
+    },
+    "schemes": ["http"],
+    "host": "localhost:8080",
+    "basePath": "/api",
+    "paths" :{
+    "/login" : {
+        "post" : {
+            "tags": [ 
+                "Login" 
+            ], 
+            "summary" : "Login",
+            "description": "Login",
+            "produces": ["application/json"],
+            "consumes": ["application/json"],
+            "parameters": [
+                {
+                    "in": "body",
+                    "name": "body",
+                    "description": "Token",
+                    "required": true,
+                    "schema": {
+                        "type": "object",
+                                "$ref": "#/definitions/usersNoId"                                                 
+                    }
+                }
+            ],
+            "responses": {
+                "200": {
+                    "description": "Opération reussite :",
+                    "schema": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/definitions/refreshToken"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "/refreshToken" : {
+        "post" : {
+            "tags": [ 
+                "Login" 
+            ], 
+            "summary" : "Login",
+            "description": "Login",
+            "produces": ["application/json"],
+            "consumes": ["application/json"],
+            "parameters": [
+                {
+                    "in": "body",
+                    "name": "body",
+                    "description": "Token",
+                    "required": true,
+                    "schema": {
+                        "type": "object",
+                                "$ref": "#/definitions/refreshToken"                                                 
+                    }
+                }
+            ],
+            "responses": {
+                "200": {
+                    "description": "Opération reussite :",
+                    "schema": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/definitions/accessToken"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "/me" : {
+        "get" : {
+            "tags": [ 
+                "Login" 
+            ], 
+            "summary" : "Récupérer les informations de la personne connectée",
+            "description": "Récupérer les informations de la personne connectée",
+            "produces": ["application/json"],
+            "parameters": [
+                {
+                    "name": "id",
+                    "in": "path",
+                    "description": "AccessToken",
+                    "required": true,
+                    "type": "varchar",
+                    "minimum": 1
+                }
+            ],
+            "responses": {
+                "200": {
+                    "description": "Opération reussite :",
+                    "schema": {
+                        "type": "array",
+                        "items": {
+                            "$ref": "#/definitions/me"
+                        }
+                    }                   
+                }
+            }
+        }
+    },
+        "/users" : {
+            "get" : {
+                "tags": [ 
+                    "Users" 
+                ], 
+                "summary" : "Récupérer tous les utilisateurs",
+                "description": "Récupérer tous les utilisateurs",
+                "produces": ["application/json"],
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "Opération reussite :",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/usersResponse"
+                            }
+                        }                   
+                    }
+                }
+            },
+            "post" : {
+                "tags": [ 
+                    "Users" 
+                ], 
+                "summary" : "Créer un utilisteur",
+                "description": "Créer un utilisteur",
+                "produces": ["application/json"],
+                "consumes": ["application/json"],
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "utilisteur",
+                        "required": true,
+                        "schema": {
+                            "type": "object",
+                                    "$ref": "#/definitions/usersNoId"                                                 
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Opération reussite :",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/usersResponse"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "/users/{id}" : {
+            "get" : {
+                "tags": [ 
+                    "Users" 
+                ], 
+                "summary" : "Récupérer un utilisateur via son identifiant",
+                "description": "Récupérerun utilisateur via son identifiant",
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Identifiant de l'utilisateur recherché",
+                        "required": true,
+                        "type": "integer",
+                        "minimum": 1
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Opération reussite :",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/usersNoPass"
+                            }
+                        }
+                    }
+                }
+            },
+            "delete" : {
+                "tags": [ 
+                    "Users" 
+                ],
+                "summary" : "Suppression de l'utilisateur",
+                "description": "Suppression de l'utilisateur",
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Identifiant de l'utilisateur recherché",
+                        "required": true,
+                        "type": "integer",
+                        "minimum": 1
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Opération reussite :",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/usersNoPass"
+                            }
+                        }
+                    }
+                }
+            },
+            "put" : {
+                "tags": [ 
+                    "Users" 
+                ],
+                "summary" : "Mise à jour un utilisateur",
+                "description": "Mise à jour un utilisateur",
+                "produces": ["application/json"],
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Identifiant de l'étape recherché",
+                        "required": true,
+                        "type": "integer",
+                        "minimum": 1
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "task object",
+                        "required": true,
+                        "schema": {
+                                    "type": "object",
+                                    "$ref": "#/definitions/usersNoId"
+                                }                        
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation",
+                        "schema": {
+                            "type": "array",
+                            "items": {
+                                "$ref": "#/definitions/usersNoPass"
+                            }
+                        }
+                    }
+                }
+            }
+        }
+},
+    "definitions": {
+        "usersResponse": {
+            "type": "object",
+            "properties": {
+                "id": {
+                     "id": "integer"
+                },
+                "email": {
+                    "email": "varchar"
+                },
+                "password": {
+                    "password": "varchar"
+                }
+            }
+        },
+        "usersNoPass": {
+            "type": "object",
+            "properties": {
+                "id": {
+                     "id": "integer"
+                },
+                "email": {
+                    "email": "varchar"
+                }
+            }
+        },
+        "usersNoId": {
+            "type": "object",
+            "properties": {
+                "email": {
+                    "email": "varchar"
+                },
+                "password": {
+                    "password": "varchar"
+                }
+            }
+        },
+        "refreshToken": {
+            "type": "object",
+            "properties": {
+                "refreshToken": {
+                    "refreshToken": "varchar"
+                }
+            }
+        },
+        "accessToken": {
+            "type": "object",
+            "properties": {
+                "accessToken": {
+                    "accessToken": "varchar"
+                }
+            }
+        },
+        "me": {
+            "type": "object",
+            "properties": {
+                "id": {
+                    "id": "id"
+                },
+                "name": {
+                    "name": "name"
+                },
+                "email": {
+                    "email": "email"
+                },
+                "admin": {
+                    "admin": "admin"
+                }
+            }
+        },
+        "InvalidResponse": {
+            "type": "object",
+            "properties": {
+                "statusCode": {
+                    "type": "string"
+                },
+                "message": {
+                    "type": "string"
+                }
+            }
+
+        }
+    }
+}

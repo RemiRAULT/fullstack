@@ -1,3 +1,5 @@
+'use client'
+
 import "../calendar/custom-calendar.css";
 import React, { useState } from "react";
 import { Calendar, momentLocalizer } from "react-big-calendar";
